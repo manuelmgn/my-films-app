@@ -1,11 +1,18 @@
 import React from "react";
 import { StarIcon } from "@heroicons/react/24/outline";
 
-function FilmCard(film: any) {
+function FilmCard({
+  film,
+  onSelectFilm,
+}: {
+  film: any;
+  onSelectFilm: (film: any) => void;
+}) {
   return (
     <div
       key={film.id}
       className="card bg-[var(--color-2)] rounded-xl border-1 border-[var(--color-3)] hover:scale-103 hover:shadow-lg hover:shadow-[var(--color-1)] transition-transform duration-300 cursor-pointer"
+      onClick={() => onSelectFilm(film)}
     >
       <img
         src={`https://image.tmdb.org/t/p/w500/${film.poster_path}`}
@@ -13,7 +20,7 @@ function FilmCard(film: any) {
         className="rounded-t-xl"
       />
       <div className="py-1 px-2 my-1">
-        <h2 className="font-medium">{film.title}</h2>
+        <h2 className="font-semibold">{film.title}</h2>
         <div className="grid grid-flow-row grid-cols-3 gap-2 grid-justify-between">
           <p className="col-span-2">
             {new Date(film.release_date).toLocaleDateString("en-US", {

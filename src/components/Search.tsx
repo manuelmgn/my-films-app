@@ -2,13 +2,16 @@ import React, { useEffect } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import FilmList from "./FilmList";
 
-function Search(props: any) {
+function Search(props: any, genres: object) {
   //TODO: move this
   const api_key: string | undefined = "8f781d70654b5a6f2fa69770d1d115a3";
 
   const [films, setFilms] = React.useState([]);
   const [input, setInput] = React.useState("");
   const [title, setTitle] = React.useState("");
+
+  console.log("aaaaaaa");
+  console.log(genres);
 
   async function searchFilms() {
     try {
@@ -30,7 +33,6 @@ function Search(props: any) {
       );
       const data = await response.json();
       setFilms(data.results.slice(0, limit));
-      console.log(data.results.slice(0, limit));
     } catch (error) {
       console.log(error);
     }
@@ -61,7 +63,7 @@ function Search(props: any) {
       <h1 className="my-10 ml-1 font-bold text-lg text-[var(--color-1)] border-b-2 border-[var(--color-2)]">
         {title}
       </h1>
-      <FilmList films={films} />
+      <FilmList films={films} genres={genres} />
     </>
   );
 }
