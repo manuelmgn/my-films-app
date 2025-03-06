@@ -7,7 +7,7 @@ import MyFilms from "./pages/MyFilms";
 
 function App() {
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto mb-5 px-2 sm:px-2 md:px-4 lg:px-8">
       <NavBar />
       <main>
         <Routes>
