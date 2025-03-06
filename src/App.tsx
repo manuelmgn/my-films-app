@@ -1,13 +1,20 @@
-import React, { useEffect, useState } from "react";
-import Header from "./components/Header";
-import Search from "./components/Search";
-import { fetchGenres } from "./genres";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+
+import NavBar from "./components/NavBar";
+import Home from "./pages/Home";
+import MyFilms from "./pages/MyFilms";
 
 function App() {
   return (
     <div className="container mx-auto">
-      <Header />
-      <Search />
+      <NavBar />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/my-films" element={<MyFilms />} />
+        </Routes>
+      </main>
     </div>
   );
 }

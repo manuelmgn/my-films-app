@@ -2,25 +2,23 @@ import React, { useEffect } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import FilmList from "./FilmList";
 
-function Search(props: any, genres: object) {
+function Search() {
   //TODO: move this
-  const api_key: string | undefined = "8f781d70654b5a6f2fa69770d1d115a3";
+
+  const api_key: string | undefined = "192c9ace8eb6c4907b9553169418eff4";
+  //const api_key: string | undefined = "8f781d70654b5a6f2fa69770d1d115a3";
 
   const [films, setFilms] = React.useState([]);
   const [input, setInput] = React.useState("");
   const [title, setTitle] = React.useState("");
 
-  console.log("aaaaaaa");
-  console.log(genres);
-
   async function searchFilms() {
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/search/movie?include_adult=false&include_video=false&sort_by=${props.sortBy}&api_key=${api_key}&page=1&query=${input}`,
+        `https://api.themoviedb.org/3/search/movie?include_adult=false&include_video=false&api_key=${api_key}&page=1&query=${input}`,
       );
       const data = await response.json();
-      setFilms(data.results.slice(0, props.limit));
-      console.log(data.results.slice(0, props.limit));
+      setFilms(data.results.slice(0, 36));
     } catch (error) {
       console.log(error);
     }
@@ -63,7 +61,7 @@ function Search(props: any, genres: object) {
       <h1 className="my-10 ml-1 font-bold text-lg text-[var(--color-1)] border-b-2 border-[var(--color-2)]">
         {title}
       </h1>
-      <FilmList films={films} genres={genres} />
+      <FilmList films={films} />
     </>
   );
 }

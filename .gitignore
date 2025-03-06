@@ -23,6 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 *.rsls
+*.rslsi
 
 .env
 src/.env
+
+# React Component Preview
+previewConfig.json

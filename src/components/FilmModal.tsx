@@ -2,8 +2,6 @@ import React from "react";
 import { StarIcon, CalendarIcon, TagIcon } from "@heroicons/react/24/outline";
 
 function FilmModal({ film, onClose }: { film: any; onClose: () => void }) {
-  console.log(film);
-
   return (
     <div
       className="fixed flex justify-center items-center z-20 inset-0 bg-[var(--color-2)]/85 transition-opacity duration-300"

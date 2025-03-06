@@ -1,5 +1,6 @@
 //TODO: move this
-const api_key: string | undefined = "8f781d70654b5a6f2fa69770d1d115a3";
+const api_key: string | undefined = "192c9ace8eb6c4907b9553169418eff4";
+//const api_key: string | undefined = "8f781d70654b5a6f2fa69770d1d115a3";
 
 export async function fetchGenres() {
   try {
