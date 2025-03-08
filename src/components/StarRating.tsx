@@ -31,6 +31,7 @@ function StarRating() {
         iconsCount={5}
         initialValue={rating ? rating : 0}
         transition={true}
+        fillColor={"var(--color-1)"}
         /* Available Props */
       />
     </div>

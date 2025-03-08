@@ -101,9 +101,7 @@ function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
               placeholder="Write your comment here..."
             ></textarea>
 
-            <div className="flex items-center">
-              <StarRating className="p-2 text-white" />
-            </div>
+            <StarRating />
             <button
               type="submit"
               className="mt-2 p-2 bg-[var(--color-1)] rounded-md text-white font-bold"
