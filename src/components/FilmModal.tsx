@@ -2,6 +2,7 @@ import { StarIcon, CalendarIcon, TagIcon } from "@heroicons/react/24/outline";
 import { formatDate, formatVote } from "../utils/formatters";
 import { Film, Genre } from "../types/shared";
 import { useGenres } from "../context/GenresContext";
+import StarRating from "./StarRating";
 
 function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
   const genres = useGenres();
@@ -100,15 +101,9 @@ function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
               placeholder="Write your comment here..."
             ></textarea>
 
-            <input
-              type="number"
-              id="rating"
-              name="rating"
-              min="0"
-              max="10"
-              className="p-2 rounded-md bg-gray-800 text-white"
-              placeholder="Rate from 0 to 10"
-            />
+            <div className="flex items-center">
+              <StarRating className="p-2 text-white" />
+            </div>
             <button
               type="submit"
               className="mt-2 p-2 bg-[var(--color-1)] rounded-md text-white font-bold"
