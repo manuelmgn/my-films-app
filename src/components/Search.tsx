@@ -12,7 +12,7 @@ function Search() {
   const [input, setInput] = React.useState("");
   const [title, setTitle] = React.useState("");
 
-  async function searchFilms() {
+  const searchFilms = React.useCallback(async () => {
     try {
       const response = await fetch(
         `https://api.themoviedb.org/3/search/movie?include_adult=false&include_video=false&api_key=${api_key}&page=1&query=${input}`,
@@ -22,7 +22,7 @@ function Search() {
     } catch (error) {
       console.log(error);
     }
-  }
+  }, [api_key, input]);
 
   async function fetchFilms(sort: string, limit: number, minVotes: number) {
     try {
@@ -44,7 +44,7 @@ function Search() {
       setTitle("Search Results");
       searchFilms();
     }
-  }, [input]);
+  }, [input, searchFilms]);
 
   return (
     <>

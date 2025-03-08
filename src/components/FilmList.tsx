@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import FilmCard from "./FilmCard";
 import FilmModal from "./FilmModal";
+import { Film } from "../types/shared";
 
-function FilmList({ films }: { films: any }) {
-  const [selectedFilm, setSelectedFilm] = useState(null);
+function FilmList({ films }: { films: Film[] }) {
+  const [selectedFilm, setSelectedFilm] = useState<Film | null>(null);
 
-  const handleSelectedFilm = (film: any) => {
+  const handleSelectedFilm = (film: Film) => {
     setSelectedFilm(film);
   };
 

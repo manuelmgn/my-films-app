@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 import { FilmIcon } from "@heroicons/react/24/outline";

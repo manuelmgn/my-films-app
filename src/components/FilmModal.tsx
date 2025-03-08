@@ -1,8 +1,8 @@
-import React from "react";
 import { StarIcon, CalendarIcon, TagIcon } from "@heroicons/react/24/outline";
 import { formatDate, formatVote } from "../utils/formatters";
+import { Film } from "../types/shared";
 
-function FilmModal({ film, onClose }: { film: any; onClose: () => void }) {
+function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
   return (
     <div
       className="fixed flex justify-center items-center z-20 inset-0 bg-[var(--color-2)]/85 transition-opacity duration-200"
@@ -20,16 +20,16 @@ function FilmModal({ film, onClose }: { film: any; onClose: () => void }) {
                 : "src/assets/cover.png"
             }
             alt={film.title}
-            className="rounded-tl-xl rounded-bl-xl"
+            className="rounded-tl-xl rounded-bl-xl h-full w-full object-cover"
           />
         </div>
-        <div className="h-1/2 grid grid-flow-row grid-cols-1 gap-2 py-3 px-5">
+        <div className="h-1/2 grid grid-flow-row grid-cols-1 gap-3 py-3 px-5">
           <div className="flex justify-between space-x-1 gap-1">
             <h2 className="font-bold text-2xl text-[var(--color-1)]">
               {film.title}
             </h2>
             <span className="cursor-pointer" onClick={onClose}>
-              &times;
+              ×
             </span>
           </div>
           <p>{film.overview}</p>
@@ -51,26 +51,23 @@ function FilmModal({ film, onClose }: { film: any; onClose: () => void }) {
             <dd>
               {film.vote_average
                 ? formatVote(film.vote_average, false, 2)
-                : "Unknown vote"}
+                : "Unknown"}
             </dd>
             {/* <dt className="flex items-center space-x-1 gap-1">              <TagIcon className="size-4 text-[var(--color-1)] shadow-white" />
 Genres:</dt>
             <dd></dd> */}
           </dl>
-          <form className="grid grid-cols-1 gap-2">
-            <label htmlFor="comment" className="text-sm font-medium">
-              Leave a comment:
-            </label>
+          <form className="grid grid-cols-1 gap-2 mt-2">
+            <h3 className="font-bold text-[var(--color-1)]">Review it!</h3>
+
             <textarea
               id="comment"
               name="comment"
-              rows={3}
+              rows={2}
               className="p-2 rounded-md bg-gray-800 text-white"
               placeholder="Write your comment here..."
             ></textarea>
-            <label htmlFor="rating" className="text-sm font-medium">
-              Your rating:
-            </label>
+
             <input
               type="number"
               id="rating"

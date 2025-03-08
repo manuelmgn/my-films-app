@@ -1,6 +1,6 @@
 import Search from "../components/Search";
 
 function MyFilms() {
-  return <div>aaa</div>;
+  return <div></div>;
 }
 export default MyFilms;

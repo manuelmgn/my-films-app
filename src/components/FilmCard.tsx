@@ -1,13 +1,13 @@
-import React from "react";
 import { StarIcon } from "@heroicons/react/24/outline";
 import { formatDate, formatVote } from "../utils/formatters";
+import { Film } from "../types/shared";
 
 function FilmCard({
   film,
   onSelectFilm,
 }: {
-  film: any;
-  onSelectFilm: (film: any) => void;
+  film: Film;
+  onSelectFilm: (film: Film) => void;
 }) {
   return (
     <div
@@ -18,7 +18,7 @@ function FilmCard({
       <img
         src={
           film.poster_path
-            ? `https://image.tmdb.org/t/p/w300/${film.poster_path}`
+            ? `https://image.tmdb.org/t/p/w400/${film.poster_path}`
             : "src/assets/cover.png"
         }
         alt={film.title}
@@ -32,10 +32,12 @@ function FilmCard({
               ? formatDate(film.release_date, false)
               : "Unknown date"}
           </p>
-          <span className="flex items-center space-x-1 gap-1">
-            <StarIcon className="size-4 text-[var(--color-1)] shadow-white" />
-            {film.vote_average ? formatVote(film.vote_average, false) : "??"}
-          </span>
+          {film.vote_average !== 0 && (
+            <span className="flex items-center space-x-1 gap-1">
+              <StarIcon className="size-4 text-[var(--color-1)] shadow-white" />
+              {formatVote(film.vote_average, false)}
+            </span>
+          )}
         </div>
       </div>
     </div>
