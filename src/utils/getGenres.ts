@@ -11,5 +11,6 @@ export async function fetchGenres() {
     return data.genres;
   } catch (error) {
     console.log(`Error trying to catch genres: ${error}`);
+    return [];
   }
 }

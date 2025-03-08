@@ -1,8 +1,20 @@
 import { StarIcon, CalendarIcon, TagIcon } from "@heroicons/react/24/outline";
 import { formatDate, formatVote } from "../utils/formatters";
-import { Film } from "../types/shared";
+import { Film, Genre } from "../types/shared";
+import { useGenres } from "../context/GenresContext";
 
 function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
+  const genres = useGenres();
+
+  const getGenreNames = (genreIds: number[]) => {
+    return genreIds
+      .map((id) => {
+        const genre = genres.find((g: Genre) => g.id === id);
+        return genre ? (genre as Genre).name : "Unknown";
+      })
+      .join(", ");
+  };
+
   return (
     <div
       className="fixed flex justify-center items-center z-20 inset-0 bg-[var(--color-2)]/85 transition-opacity duration-200"
@@ -33,29 +45,32 @@ function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
             </span>
           </div>
           <p>{film.overview}</p>
-          <dl className="grid grid-cols-2 gap-2 items-center">
-            <dt className="flex items-center space-x-1 gap-2">
+          <dl className="grid grid-cols-5 gap-2 items-center ">
+            <dt className="col-span-2 flex items-center space-x-1 gap-2 text-[var(--color-2)] text-sm">
               {" "}
               <CalendarIcon className="size-4 text-[var(--color-1)] shadow-white" />
               Release date:
             </dt>
-            <dd>
+            <dd className="col-span-3">
               {film.release_date
                 ? formatDate(film.release_date, true)
                 : "Unknown date"}
             </dd>
-            <dt className="flex items-center space-x-1 gap-2">
+            <dt className="col-span-2 flex items-center space-x-1 gap-2 text-[var(--color-2)] text-sm">
               <StarIcon className="size-4 text-[var(--color-1)] shadow-white" />
               Global rating:
             </dt>
-            <dd>
+            <dd className="col-span-3">
               {film.vote_average
                 ? formatVote(film.vote_average, false, 2)
                 : "Unknown"}
             </dd>
-            {/* <dt className="flex items-center space-x-1 gap-1">              <TagIcon className="size-4 text-[var(--color-1)] shadow-white" />
-Genres:</dt>
-            <dd></dd> */}
+            <dt className="col-span-2 flex items-center space-x-1 gap-2 text-[var(--color-2)] text-sm">
+              {" "}
+              <TagIcon className="size-4 text-[var(--color-1)] shadow-white" />
+              Genres:
+            </dt>
+            <dd className="col-span-3">{getGenreNames(film.genre_ids)}</dd>
           </dl>
           <form className="grid grid-cols-1 gap-2 mt-2">
             <h3 className="font-bold text-[var(--color-1)]">Review it!</h3>

@@ -39,7 +39,7 @@ function Search() {
   useEffect(() => {
     if (input == "") {
       setTitle("Popular");
-      fetchFilms("popularity.desc", 12, 100);
+      fetchFilms("popularity.desc", 16, 100);
     } else {
       setTitle("Search Results");
       searchFilms();
