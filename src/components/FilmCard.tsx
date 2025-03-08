@@ -18,7 +18,7 @@ function FilmCard({
       <img
         src={
           film.poster_path
-            ? `https://image.tmdb.org/t/p/w400/${film.poster_path}`
+            ? `https://image.tmdb.org/t/p/w500/${film.poster_path}`
             : "src/assets/cover.png"
         }
         alt={film.title}

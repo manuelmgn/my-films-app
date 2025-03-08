@@ -29,7 +29,7 @@ function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
           <img
             src={
               film.poster_path
-                ? `https://image.tmdb.org/t/p/w400${film.poster_path}`
+                ? `https://image.tmdb.org/t/p/w780${film.poster_path}`
                 : "src/assets/cover.png"
             }
             alt={film.title}
@@ -45,7 +45,7 @@ function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
             <img
               src={
                 film.poster_path
-                  ? `https://image.tmdb.org/t/p/w400${film.backdrop_path}`
+                  ? `https://image.tmdb.org/t/p/w780${film.backdrop_path}`
                   : "src/assets/cover.png"
               }
               alt={film.title}
