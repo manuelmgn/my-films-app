@@ -5,7 +5,8 @@
   /* COLOURS */
   /* ---------------------------------------------------------------------- */
   --color-1: var(--color-teal-500); /* Text colour 1 */
-  --color-2: var(--color-zinc-50);
-  --color-3: var(--color-teal-50);
+  --color-2: var(--color-teal-50);
+  --color-3: var(--color-slate-200);
+  --color-4: var(--color-slate-50);
   --color-mint-500: oklch(0.72 0.11 178);
 }

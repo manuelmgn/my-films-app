@@ -48,7 +48,7 @@ function Search() {
 
   return (
     <>
-      <form className="y-2 py-1 px-3 w-[50%] justify-self-center flex items-center space-x-0 m rounded-2xl bg-[var(--color-3)]">
+      <form className="y-2 py-1 px-3 w-[50%] justify-self-center flex items-center space-x-0 m rounded-2xl bg-[var(--color-2)]">
         <MagnifyingGlassIcon className="size-5 text-[var(--color-1)] shadow-white" />
         <input
           type="text"
@@ -58,7 +58,7 @@ function Search() {
           onChange={(e) => setInput(e.target.value)}
         />
       </form>
-      <h1 className="my-10 ml-1 font-bold text-lg text-[var(--color-1)] border-b-2 border-[var(--color-2)]">
+      <h1 className="my-10 ml-1 font-bold text-lg text-[var(--color-1)] border-b-2 border-[var(--color-4)]">
         {title}
       </h1>
       <FilmList films={films} />

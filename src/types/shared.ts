@@ -2,6 +2,7 @@ export type Film = {
   id: number;
   genre_ids: number[];
   poster_path: string;
+  backdrop_path: string;
   title: string;
   overview: string;
   release_date: string;

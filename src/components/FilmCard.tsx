@@ -12,7 +12,7 @@ function FilmCard({
   return (
     <div
       key={film.id}
-      className="bg-black text-[var(--color-2)] rounded-lg  hover:scale-103 shadow-xs hover:shadow-xl shadow-[var(--color-1)] transition-transform duration-200 cursor-pointer"
+      className="bg-black text-[var(--color-4)] rounded-lg  hover:scale-103 shadow-xs hover:shadow-xl shadow-[var(--color-1)] transition-transform duration-200 cursor-pointer"
       onClick={() => onSelectFilm(film)}
     >
       <img
