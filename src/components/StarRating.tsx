@@ -1,7 +1,16 @@
 import { useState } from "react";
 import { Rating } from "react-simple-star-rating";
+
 import "./StarRating.css";
 
+/**
+ * Imported StarRating component.
+ *
+ * @param {Object} props - The component props.
+ * @param {number} props.value - The current rating value.
+ * @param {Function} props.onChange - The callback function to change the rating value.
+ * @returns {JSX.Element} The rendered component.
+ */
 const StarRating = ({
   value,
   onChange,

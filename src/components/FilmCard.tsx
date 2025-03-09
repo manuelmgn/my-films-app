@@ -1,7 +1,17 @@
 import { StarIcon } from "@heroicons/react/24/outline";
+
 import { formatDate, formatVote } from "../utils/formatters";
 import { Film } from "../types/shared";
 
+/**
+ * Component that displays a film card with its poster, title, release date and global vote average.
+ * The card is clickable and shows a modal when clicked.
+ *
+ * @param {Object} props - The properties object.
+ * @param {Film} props.film - The film object containing details to display.
+ * @param {Function} props.onSelectFilm - The callback function to call when the film card is clicked.
+ * @returns {JSX.Element} The rendered film card component.
+ */
 function FilmCard({
   film,
   onSelectFilm,
@@ -32,6 +42,7 @@ function FilmCard({
               ? formatDate(film.release_date, false)
               : "Unknown date"}
           </p>
+          {/* Shows nothing instead of '0'*/}
           {film.vote_average !== 0 && (
             <span className="flex items-center space-x-1 gap-1">
               <StarIcon className="size-4 text-[var(--color-1)] shadow-white" />

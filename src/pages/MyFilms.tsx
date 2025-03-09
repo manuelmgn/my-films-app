@@ -1,7 +1,7 @@
-import Search from "../components/Search";
+import ShowFilms from "../components/ShowFilms.tsx";
 
 function MyFilms() {
-  return <Search myRatings={true} />;
+  return <ShowFilms myRatings={true} />;
 }
 
 export default MyFilms;

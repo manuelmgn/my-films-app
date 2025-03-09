@@ -15,7 +15,7 @@ function App() {
           <main>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/my-films" element={<MyFilms />} />
+              <Route path="/mylist" element={<MyFilms />} />
             </Routes>
           </main>
         </GenresProvider>

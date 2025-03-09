@@ -1,18 +1,25 @@
+import { useState } from "react";
 import { StarIcon, CalendarIcon, TagIcon } from "@heroicons/react/24/outline";
+
 import { formatDate, formatVote } from "../utils/formatters";
 import { Film, Genre } from "../types/shared";
 import { useGenres } from "../context/GenresContext";
-import StarRating from "./StarRating";
-import { useState } from "react";
 import { useRatingContext } from "../context/RatingContext";
+import StarRating from "./StarRating";
 
+/**
+ * Component that displays detailed information (as a modal) about a film and allows the user to rate and comment on it.
+ *
+ * @param {Object} props - The component props.
+ * @param {Film} props.film - The film object to display.
+ * @param {Function} props.onClose - The callback function to close the modal.
+ * @returns {JSX.Element} The rendered component.
+ */
 function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
+  // ---------------------------------------------------------------------------
+  // Genres
+  // ---------------------------------------------------------------------------
   const genres = useGenres();
-  const { state, dispatch } = useRatingContext();
-  const existingData = state[film.id] || { comment: "", rating: 0 };
-  const [comment, setComment] = useState(existingData.comment);
-  const [rating, setRating] = useState(existingData.rating);
-
   const getGenreNames = (genreIds: number[]) => {
     return genreIds
       .map((id) => {
@@ -21,6 +28,18 @@ function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
       })
       .join(", ");
   };
+
+  // ---------------------------------------------------------------------------
+  // Ratings
+  // ---------------------------------------------------------------------------
+  // Access to the rating context: state (current ratings) and dispatch (update ratings)
+  const { state, dispatch } = useRatingContext();
+  // Retrieve existing ranting data or empty ones
+  const existingData = state[film.id] || { comment: "", rating: 0 };
+  // Set the initial state of the comment
+  const [comment, setComment] = useState(existingData.comment);
+  // Set the initial state of the rating
+  const [rating, setRating] = useState(existingData.rating);
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,6 +70,8 @@ function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
             alt={film.title}
             className="hidden sm:block rounded-tl-xl rounded-bl-xl w-full h-full object-cover"
           />
+          {/* Show a blurred image on small screens.
+          Instead of a (vertical) poster, it shows a horizontal backdrop */}
           <div className="block sm:hidden">
             <span
               className="cursor-pointer absolute right-5 top-3 z-5"

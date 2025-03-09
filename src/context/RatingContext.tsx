@@ -28,7 +28,7 @@ const FilmContext = createContext<{
   dispatch: React.Dispatch<Rating>;
 } | null>(null);
 
-export const FilmRatingProvider = ({ children }: { children: ReactNode }) => {
+const FilmRatingProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(filmReducer, initialState);
 
   useEffect(() => {
@@ -42,12 +42,12 @@ export const FilmRatingProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export const useRatingContext = () => {
+const useRatingContext = () => {
   const context = React.useContext(FilmContext);
   if (!context) {
-    throw new Error(
-      "useRatingContext debe usarse dentro de un FilmRatingProvider",
-    );
+    throw new Error("useRatingContext error");
   }
   return context;
 };
+
+export { FilmRatingProvider, useRatingContext };

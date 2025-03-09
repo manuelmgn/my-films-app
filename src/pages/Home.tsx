@@ -1,6 +1,6 @@
-import Search from "../components/Search";
+import ShowFilms from "../components/ShowFilms.tsx";
 
 function Home() {
-  return <Search myRatings={false} />;
+  return <ShowFilms myRatings={false} />;
 }
 export default Home;
