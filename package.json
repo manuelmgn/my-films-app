@@ -2,11 +2,14 @@
   "name": "my-films-app",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://manuelmgn.github.io/my-films-app/",
   "type": "module",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,html}\"",
     "dev": "vite",
-    "build": "[my-films-app] tsc -b && vite build",
+    "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
