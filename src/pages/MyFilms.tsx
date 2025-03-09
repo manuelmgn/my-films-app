@@ -1,6 +1,7 @@
 import Search from "../components/Search";
 
 function MyFilms() {
-  return <div></div>;
+  return <Search myRatings={true} />;
 }
+
 export default MyFilms;

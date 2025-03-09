@@ -3,9 +3,15 @@ import { formatDate, formatVote } from "../utils/formatters";
 import { Film, Genre } from "../types/shared";
 import { useGenres } from "../context/GenresContext";
 import StarRating from "./StarRating";
+import { useState } from "react";
+import { useRatingContext } from "../context/RatingContext";
 
 function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
   const genres = useGenres();
+  const { state, dispatch } = useRatingContext();
+  const existingData = state[film.id] || { comment: "", rating: 0 };
+  const [comment, setComment] = useState(existingData.comment);
+  const [rating, setRating] = useState(existingData.rating);
 
   const getGenreNames = (genreIds: number[]) => {
     return genreIds
@@ -14,6 +20,16 @@ function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
         return genre ? (genre as Genre).name : "Unknown";
       })
       .join(", ");
+  };
+
+  const handleSave = (e: React.FormEvent) => {
+    e.preventDefault();
+    dispatch({
+      type: "ADD_RATING",
+      id: film.id,
+      data: { comment, rating },
+    });
+    onClose();
   };
 
   return (
@@ -90,7 +106,7 @@ function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
             </dt>
             <dd className="col-span-3">{getGenreNames(film.genre_ids)}</dd>
           </dl>
-          <form className="grid grid-cols-1 gap-2 mt-2">
+          <form className="grid grid-cols-1 gap-2 mt-2" onSubmit={handleSave}>
             <h3 className="font-bold text-[var(--color-1)]">Review it!</h3>
 
             <textarea
@@ -99,12 +115,14 @@ function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
               rows={2}
               className="p-2 rounded-md bg-gray-800 text-white"
               placeholder="Write your comment here..."
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
             ></textarea>
 
-            <StarRating />
+            <StarRating value={rating} onChange={setRating} />
             <button
               type="submit"
-              className="mt-2 p-2 bg-[var(--color-1)] rounded-md text-white font-bold"
+              className="mt-2 p-2 bg-[var(--color-1)] rounded-md text-white font-bold cursor-pointer"
             >
               Submit
             </button>

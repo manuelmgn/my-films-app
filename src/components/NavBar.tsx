@@ -18,8 +18,8 @@ function NavBar() {
         </h1>
       </div>
       <div className="w-1/2 text-end hover:underline">
-        <Link to="/my-films" className="cursor-pointer">
-          My films
+        <Link to="/mylist" className="cursor-pointer">
+          My list
         </Link>
       </div>
     </nav>

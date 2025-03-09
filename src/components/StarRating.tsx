@@ -2,8 +2,14 @@ import { useState } from "react";
 import { Rating } from "react-simple-star-rating";
 import "./StarRating.css";
 
-function StarRating() {
-  const [rating, setRating] = useState(0);
+const StarRating = ({
+  value,
+  onChange,
+}: {
+  value: number;
+  onChange: (value: number) => void;
+}) => {
+  const [rating, setRating] = useState(value);
 
   const handleRating = (rate: number) => {
     if (rate === rating) {
@@ -12,30 +18,22 @@ function StarRating() {
        * allowed, with ends up setting it to 0.
        * @see {@link https://github.com/awran5/react-simple-star-rating/issues/47} */
       setRating(100);
+      onChange(100);
       return;
     }
     setRating(rate);
+    onChange(rate);
   };
 
-  //const onPointerEnter = () => console.log("Enter");
-  //const onPointerLeave = () => console.log("Leave");
-  //const onPointerMove = (value: number, index: number) => console.log(value, index);
-
   return (
-    <div className="StarRating">
-      <Rating
-        onClick={handleRating}
-        // onPointerEnter={onPointerEnter}
-        // onPointerLeave={onPointerLeave}
-        // onPointerMove={onPointerMove}
-        iconsCount={5}
-        initialValue={rating ? rating : 0}
-        transition={true}
-        fillColor={"var(--color-1)"}
-        /* Available Props */
-      />
-    </div>
+    <Rating
+      onClick={handleRating}
+      initialValue={rating}
+      transition={true}
+      fillColor={"var(--color-1)"}
+      iconsCount={5}
+    />
   );
-}
+};
 
 export default StarRating;

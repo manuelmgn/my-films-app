@@ -1,9 +1,8 @@
+import { ReactNode } from "react";
 import { createContext, useContext, useEffect, useState } from "react";
 import { fetchGenres } from "../utils/getGenres";
 
 const GenresContext = createContext([]);
-
-import { ReactNode } from "react";
 
 interface GenresProviderProps {
   children: ReactNode;
