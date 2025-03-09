@@ -6,7 +6,7 @@
   "scripts": {
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,html}\"",
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "[my-films-app] tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
