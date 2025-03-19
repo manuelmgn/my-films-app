@@ -5,13 +5,13 @@
   "homepage": "https://manuelmgn.github.io/my-films-app",
   "type": "module",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,html}\"",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
