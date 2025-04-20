@@ -1,4 +1,4 @@
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { createRoot } from "react-dom/client";
 
 import App from "./App";
@@ -8,9 +8,9 @@ import "./index.css";
 const container = document.getElementById("root");
 const root = createRoot(container!);
 root.render(
-  <BrowserRouter>
+  <HashRouter>
     <FilmRatingProvider>
       <App />
     </FilmRatingProvider>
-  </BrowserRouter>,
+  </HashRouter>,
 );
