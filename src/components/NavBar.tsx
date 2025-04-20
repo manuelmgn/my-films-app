@@ -19,11 +19,7 @@ function NavBar() {
       <div className="w-1/2 flex-auto flex items-center space-x-2 my-2 rounded ">
         <FilmIcon className="size-6 text-[var(--color-1)] shadow-white" />
         <h1 className="text-2xl font-bold hover:underline">
-          <Link
-            to="/"
-            className="cursor-pointer"
-            onClick={() => (window.location.href = "/")}
-          >
+          <Link to="/" className="cursor-pointer">
             Filmapp
           </Link>
         </h1>
