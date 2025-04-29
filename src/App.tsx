@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 
 import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
-import MyFilms from "./pages/MyFilms";
+import MyRatings from "./pages/MyRatings";
 import { GenresProvider } from "./context/GenresContext";
 import { FilmRatingProvider } from "./context/RatingContext";
 
@@ -15,7 +15,7 @@ function App() {
           <main>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/mylist" element={<MyFilms />} />
+              <Route path="/mylist" element={<MyRatings />} />
             </Routes>
           </main>
         </GenresProvider>

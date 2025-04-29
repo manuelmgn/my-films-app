@@ -39,7 +39,7 @@ function ShowFilms({ myRatings }: ShowFilmsProps) {
     } catch (error) {
       console.log(error);
     }
-  }, [api_key, input]);
+  }, [input]);
 
   // Retrieve films based on predefined criteria
   const fetchFilms = React.useCallback(
@@ -104,7 +104,7 @@ function ShowFilms({ myRatings }: ShowFilmsProps) {
           <input
             type="text"
             className="px-3 py-2 rounded w-full outline-none"
-            placeholder="ShowFilms films..."
+            placeholder="Search for films..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
