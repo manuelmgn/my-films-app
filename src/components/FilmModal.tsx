@@ -53,7 +53,7 @@ function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
 
   return (
     <div
-      className="fixed flex justify-center items-center z-20 inset-0 bg-[var(--color-4)]/85 transition-opacity duration-200"
+      className="fixed flex justify-center items-center z-20 inset-0 bg-[var(--color-20)]/85 transition-opacity duration-200"
       onClick={onClose}
     >
       <div
@@ -101,7 +101,7 @@ function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
           </div>
           <p>{film.overview}</p>
           <dl className="grid grid-cols-5 gap-1 items-center ">
-            <dt className="col-span-2 flex items-center space-x-1 gap-1 sm:gap-2 text-[var(--color-3)] text-sm">
+            <dt className="col-span-2 flex items-center space-x-1 gap-1 sm:gap-2 text-[var(--color-2)] text-sm">
               {" "}
               <CalendarIcon className="size-4 text-[var(--color-1)] shadow-white" />
               Release date:
@@ -111,7 +111,7 @@ function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
                 ? formatDate(film.release_date, true)
                 : "Unknown date"}
             </dd>
-            <dt className="col-span-2 flex items-center space-x-1 gap-1 sm:gap-2 text-[var(--color-3)] text-sm">
+            <dt className="col-span-2 flex items-center space-x-1 gap-1 sm:gap-2 text-[var(--color-2)] text-sm">
               <StarIcon className="size-4 text-[var(--color-1)] shadow-white" />
               Global rating:
             </dt>
@@ -120,7 +120,7 @@ function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
                 ? formatVote(film.vote_average, false, 2)
                 : "Unknown"}
             </dd>
-            <dt className="col-span-2 flex items-center space-x-1 gap-1 sm:gap-2 text-[var(--color-3)] text-sm">
+            <dt className="col-span-2 flex items-center space-x-1 gap-1 sm:gap-2 text-[var(--color-2)] text-sm">
               {" "}
               <TagIcon className="size-4 text-[var(--color-1)] shadow-white" />
               Genres:

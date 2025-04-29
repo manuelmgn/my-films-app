@@ -38,13 +38,13 @@ function ShowMyRatings() {
 
   return (
     <>
-      <h1 className="my-10 ml-1 font-bold text-lg text-[var(--color-1)] border-b-2 border-[var(--color-4)]">
+      <h1 className="my-10 font-bold text-lg text-[var(--color-1)] border-b-2 border-[var(--color-20)]">
         {title}
       </h1>
       {films.length > 0 ? (
         <FilmList films={films} />
       ) : (
-        <p className="text-[var(--color-4)] text-l">No films rated yet.</p>
+        <p className="text-[var(--color-3)] text-l">No films rated yet.</p>
       )}
     </>
   );

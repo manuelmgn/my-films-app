@@ -99,7 +99,7 @@ function ShowFilms({ myRatings }: ShowFilmsProps) {
     <>
       {/* Show the search bar only when not displaying own ratings */}
       {!myRatings && (
-        <form className="y-2 py-1 px-3 w-[50%] justify-self-center flex items-center space-x-0 m rounded-2xl bg-[var(--color-2)]">
+        <form className="y-2 py-1 px-3 w-[50%] justify-self-center flex items-center space-x-0 m rounded-2xl bg-[var(--color-10)]">
           <MagnifyingGlassIcon className="size-5 text-[var(--color-1)] shadow-white" />
           <input
             type="text"
@@ -110,7 +110,7 @@ function ShowFilms({ myRatings }: ShowFilmsProps) {
           />
         </form>
       )}
-      <h1 className="my-10 ml-1 font-bold text-lg text-[var(--color-1)] border-b-2 border-[var(--color-4)]">
+      <h1 className="my-10 font-bold text-lg text-[var(--color-1)] border-b-2 border-[var(--color-20)]">
         {title}
       </h1>
       <FilmList films={films} />
