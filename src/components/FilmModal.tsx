@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { StarIcon, CalendarIcon, TagIcon } from "@heroicons/react/24/outline";
 
 import { formatDate, formatVote } from "../utils/formatters";
@@ -40,6 +40,10 @@ function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
   const [comment, setComment] = useState(existingData.comment);
   // Set the initial state of the rating
   const [rating, setRating] = useState(existingData.rating);
+  // Track if film has been reviewed
+  const [reviewed, setReviewed] = useState(
+    existingData.comment !== "" || existingData.rating !== 0,
+  );
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,6 +54,14 @@ function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
     });
     onClose();
   };
+
+  useEffect(() => {
+    console.log(comment, rating);
+    if (comment !== "" || rating !== 0) {
+      setReviewed(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const unratedFilmForm = (
     <form className="grid grid-cols-1 gap-2 mt-2" onSubmit={handleSave}>
@@ -65,7 +77,7 @@ function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
         onChange={(e) => setComment(e.target.value)}
       ></textarea>
 
-      <StarRating value={rating} onChange={setRating} />
+      <StarRating value={rating} onChange={(value) => setRating(value)} />
       <button
         type="submit"
         className="mt-2 p-2 bg-[var(--color-1)] rounded-md text-white font-bold cursor-pointer"
@@ -123,7 +135,7 @@ function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
           Instead of a (vertical) poster, it shows a horizontal backdrop */}
           <div className="block sm:hidden">
             <span
-              className="cursor-pointer absolute text-2xl right-5 top-3 z-5 "
+              className="cursor-pointer absolute text-3xl right-5 top-3 z-5 "
               onClick={onClose}
             >
               ×
@@ -179,7 +191,7 @@ function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
             </dt>
             <dd className="col-span-3">{getGenreNames(film.genre_ids)}</dd>
           </dl>
-          {comment === "" && rating === 0 ? unratedFilmForm : ratedFilmForm}
+          {reviewed ? ratedFilmForm : unratedFilmForm}
         </div>
       </div>
     </div>
