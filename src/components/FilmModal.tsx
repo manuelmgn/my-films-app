@@ -123,7 +123,7 @@ function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
           Instead of a (vertical) poster, it shows a horizontal backdrop */}
           <div className="block sm:hidden">
             <span
-              className="cursor-pointer absolute right-5 top-3 z-5"
+              className="cursor-pointer absolute text-2xl right-5 top-3 z-5 "
               onClick={onClose}
             >
               ×
@@ -135,7 +135,7 @@ function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
                   : "https://github.com/manuelmgn/my-films-app/blob/master/src/assets/cover.png?raw=true"
               }
               alt={film.title}
-              className="opacity-30  rounded-tl-xl rounded-tr-xl w-full h-40 object-cover z-0 blur-[1px]"
+              className="opacity-30 rounded-tl-xl rounded-tr-xl w-full h-40 object-cover z-0 blur-[1px]"
             />
           </div>
         </div>
@@ -144,7 +144,10 @@ function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
             <h2 className="font-bold text-2xl text-[var(--color-1)]">
               {film.title}
             </h2>
-            <span className="cursor-pointer hidden sm:block" onClick={onClose}>
+            <span
+              className="cursor-pointer text-lg hidden sm:block"
+              onClick={onClose}
+            >
               ×
             </span>
           </div>
