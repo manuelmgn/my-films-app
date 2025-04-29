@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import FilmCard from "./FilmCard";
 import FilmModal from "./FilmModal";
@@ -24,6 +24,24 @@ function FilmList({ films }: { films: Film[] }) {
   const handleSelectedFilm = (film: Film) => {
     setSelectedFilm(film);
   };
+
+  // Handle the back button in the browser
+  // When the modal is open, it prevents the default behavior of the back button
+  useEffect(() => {
+    window.history.pushState(null, "", window.location.href);
+    const handlePopState = (e: PopStateEvent) => {
+      if (selectedFilm) {
+        e.preventDefault();
+        setSelectedFilm(null);
+      }
+    };
+
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [selectedFilm]);
 
   return (
     <>
