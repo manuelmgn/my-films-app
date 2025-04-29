@@ -51,7 +51,56 @@ function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
     onClose();
   };
 
-  return (
+  const unratedFilmForm = (
+    <form className="grid grid-cols-1 gap-2 mt-2" onSubmit={handleSave}>
+      <h3 className="font-bold text-[var(--color-1)]">Review it!</h3>
+
+      <textarea
+        id="comment"
+        name="comment"
+        rows={2}
+        className="p-2 rounded-md bg-gray-800 text-white"
+        placeholder="Write your comment here..."
+        value={comment}
+        onChange={(e) => setComment(e.target.value)}
+      ></textarea>
+
+      <StarRating value={rating} onChange={setRating} />
+      <button
+        type="submit"
+        className="mt-2 p-2 bg-[var(--color-1)] rounded-md text-white font-bold cursor-pointer"
+      >
+        Submit
+      </button>
+    </form>
+  );
+
+  const ratedFilmForm = (
+    <form className="grid grid-cols-1 gap-2 mt-2" onSubmit={handleSave}>
+      <h3 className="font-bold text-[var(--color-1)]">Your review:</h3>
+
+      <textarea
+        id="comment"
+        name="comment"
+        rows={3}
+        className="p-2 rounded-md bg-gray-800 text-white"
+        placeholder=""
+        value={comment}
+        onChange={(e) => setComment(e.target.value)}
+        disabled
+      ></textarea>
+
+      <StarRating value={rating} onChange={setRating} />
+      {/* <button
+        type="submit"
+        className="mt-2 p-2 bg-[var(--color-1)] rounded-md text-white font-bold cursor-pointer"
+      >
+        Submit
+      </button> */}
+    </form>
+  );
+
+  const fullModal = (
     <div
       className="fixed flex justify-center items-center z-20 inset-0 bg-[var(--color-20)]/85 transition-opacity duration-200"
       onClick={onClose}
@@ -127,31 +176,13 @@ function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
             </dt>
             <dd className="col-span-3">{getGenreNames(film.genre_ids)}</dd>
           </dl>
-          <form className="grid grid-cols-1 gap-2 mt-2" onSubmit={handleSave}>
-            <h3 className="font-bold text-[var(--color-1)]">Review it!</h3>
-
-            <textarea
-              id="comment"
-              name="comment"
-              rows={2}
-              className="p-2 rounded-md bg-gray-800 text-white"
-              placeholder="Write your comment here..."
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-            ></textarea>
-
-            <StarRating value={rating} onChange={setRating} />
-            <button
-              type="submit"
-              className="mt-2 p-2 bg-[var(--color-1)] rounded-md text-white font-bold cursor-pointer"
-            >
-              Submit
-            </button>
-          </form>
+          {comment === "" && rating === 0 ? unratedFilmForm : ratedFilmForm}
         </div>
       </div>
     </div>
   );
+
+  return fullModal;
 }
 
 export default FilmModal;
