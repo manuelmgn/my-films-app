@@ -29,7 +29,7 @@ function FilmCard({
         src={
           film.poster_path
             ? `https://image.tmdb.org/t/p/w500/${film.poster_path}`
-            : "src/assets/cover.png"
+            : "https://github.com/manuelmgn/my-films-app/blob/master/src/assets/cover.png?raw=true"
         }
         alt={film.title}
         className="rounded-t-lg"

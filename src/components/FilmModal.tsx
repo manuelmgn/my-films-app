@@ -65,7 +65,7 @@ function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
             src={
               film.poster_path
                 ? `https://image.tmdb.org/t/p/w780${film.poster_path}`
-                : "src/assets/cover.png"
+                : "https://github.com/manuelmgn/my-films-app/blob/master/src/assets/cover.png?raw=true"
             }
             alt={film.title}
             className="hidden sm:block rounded-tl-xl rounded-bl-xl w-full h-full object-cover"
@@ -83,7 +83,7 @@ function FilmModal({ film, onClose }: { film: Film; onClose: () => void }) {
               src={
                 film.poster_path
                   ? `https://image.tmdb.org/t/p/w780${film.backdrop_path}`
-                  : "src/assets/cover.png"
+                  : "https://github.com/manuelmgn/my-films-app/blob/master/src/assets/cover.png?raw=true"
               }
               alt={film.title}
               className="opacity-30  rounded-tl-xl rounded-tr-xl w-full h-40 object-cover z-0 blur-[1px]"
